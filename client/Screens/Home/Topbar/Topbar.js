@@ -11,8 +11,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import SearchBar from "../../../components/SearchBar";
 import Boxes from "../Boxes/Boxes";
-import { DynamicBackground } from "./DynBack";
-import beachData from "../../Maps/beachData.json";
+import { DynamicBackground } from "./Dynback";
 
 export default function TopBar({
   logoAndMenuOpacity,

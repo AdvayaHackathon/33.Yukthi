@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { View, StyleSheet, SafeAreaView, Animated, TouchableOpacity, Text, Alert } from "react-native";
-import TopBar from "./Topbar/TopBar";
+import TopBar from "./Topbar/Topbar";
 import Banner from "./Banners/Banners";
 import NavBar from "./Navbar";
 import * as Location from 'expo-location';
