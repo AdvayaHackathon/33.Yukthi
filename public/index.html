@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tairishi - Beach Tourism</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="/" class="logo">Tairi<span>shi</span></a>
+      <nav>
+        <ul>
+          <li><a href="#" class="active" data-target="home">Home</a></li>
+          <li><a href="#" data-target="add-stay">Add Stay</a></li>
+          <li><a href="#" data-target="add-restaurant">Add Restaurant</a></li>
+          <li><a href="#" data-target="add-artcraft">Add Artcraft</a></li>
+          <li><a href="#" data-target="add-guide">Add Guide</a></li>
+          <li><a href="#" data-target="add-event">Add Event</a></li>
+          <li><a href="#" data-target="add-ad">Place Ad</a></li>
+          <li><a href="#" data-target="add-activity">Add Activity</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Home Section -->
+  <section id="home" class="content-section active">
+    <div class="hero">
+      <div class="hero-content">
+        <h1>Welcome to Tairishi</h1>
+        <p>Discover the most beautiful beaches and experiences</p>
+        <div>
+          <a href="#" class="btn" data-target="add-stay">Add a Stay</a>
+          <a href="#" class="btn btn-outline" data-target="add-restaurant">Add a Restaurant</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Add Stay Section -->
+  <section id="add-stay" class="content-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Add a Stay</h2>
+        <p>List your accommodation near a beautiful beach</p>
+      </div>
+      
+      <div class="form-container">
+        <h3 class="form-title">Stay Details</h3>
+        <form id="add-stay-form" enctype="multipart/form-data">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="stay-name">Stay Name</label>
+              <input type="text" id="stay-name" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="beach-id">Beach</label>
+              <select id="beach-id" name="beachId" class="form-control beach-select" required>
+                <option value="">Select a beach</option>
+                <!-- Beaches will be populated via JavaScript -->
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="address-link">Address Link (Google Maps)</label>
+            <input type="url" id="address-link" name="addressLink" class="form-control" placeholder="https://maps.google.com/...">
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="price-range-min">Min Price (₹)</label>
+              <input type="number" id="price-range-min" name="priceRangeMin" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="price-range-max">Max Price (₹)</label>
+              <input type="number" id="price-range-max" name="priceRangeMax" class="form-control" required>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="opening-time">Opening Time</label>
+              <input type="time" id="opening-time" name="openingTime" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="closing-time">Closing Time</label>
+              <input type="time" id="closing-time" name="closingTime" class="form-control">
+            </div>
+          </div>
+                  
+          <div class="form-group">
+            <label for="room-types">Room Types (comma separated)</label>
+            <input type="text" id="room-types" name="roomTypes" class="form-control" placeholder="Deluxe, Standard, Suite">
+          </div>
+          
+          <div class="form-group">
+            <label for="stay-photo">Photo</label>
+            <input type="file" id="stay-photo" name="photo" class="form-control" accept="image/*" onchange="previewImage(this, 'photo-preview')">
+            <img id="photo-preview" class="image-preview" src="#" alt="Preview">
+          </div>
+          
+          <div class="form-group">
+            <label for="payment-amount">Payment Amount (₹)</label>
+            <input type="number" id="payment-amount" name="paymentAmount" class="form-control" placeholder="Amount to pay for listing">
+          </div>
+          
+          <button type="submit" class="btn">Add Stay</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Add Restaurant Section -->
+  <section id="add-restaurant" class="content-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Add a Seafood Restaurant</h2>
+        <p>List your seafood restaurant near a beautiful beach</p>
+      </div>
+      
+      <div class="form-container">
+        <h3 class="form-title">Restaurant Details</h3>
+        <form id="add-restaurant-form" enctype="multipart/form-data">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="restaurant-name">Restaurant Name</label>
+              <input type="text" id="restaurant-name" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="restaurant-beach-id">Beach</label>
+              <select id="restaurant-beach-id" name="beachId" class="form-control beach-select" required>
+                <option value="">Select a beach</option>
+                <!-- Beaches will be populated via JavaScript -->
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="restaurant-address">Address</label>
+            <input type="text" id="restaurant-address" name="address" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="restaurant-address-link">Address Link (Google Maps)</label>
+            <input type="url" id="restaurant-address-link" name="addressLink" class="form-control" placeholder="https://maps.google.com/...">
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="restaurant-opening-time">Opening Time</label>
+              <input type="time" id="restaurant-opening-time" name="openingTime" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="restaurant-closing-time">Closing Time</label>
+              <input type="time" id="restaurant-closing-time" name="closingTime" class="form-control">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="restaurant-dishes">Specialty Dishes (comma separated)</label>
+            <input type="text" id="restaurant-dishes" name="dishes" class="form-control" placeholder="Fish Curry, Prawn Masala, Crab Fry">
+          </div>
+          
+          <div class="form-group">
+            <label for="restaurant-photo">Photo</label>
+            <input type="file" id="restaurant-photo" name="photo" class="form-control" accept="image/*" onchange="previewImage(this, 'restaurant-preview')">
+            <img id="restaurant-preview" class="image-preview" src="#" alt="Preview">
+          </div>
+          
+          <div class="form-group">
+            <label for="restaurant-payment-amount">Payment Amount (₹)</label>
+            <input type="number" id="restaurant-payment-amount" name="paymentAmount" class="form-control" placeholder="Amount to pay for listing">
+          </div>
+          
+          <button type="submit" class="btn">Add Restaurant</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Add Artcraft Section -->
+  <section id="add-artcraft" class="content-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Add an Artcraft Product</h2>
+        <p>List artcraft products available near beaches</p>
+      </div>
+      
+      <div class="form-container">
+        <h3 class="form-title">Artcraft Product Details</h3>
+        <form id="add-artcraft-form" enctype="multipart/form-data">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="product-name">Product Name</label>
+              <input type="text" id="product-name" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="product-beach-id">Beach</label>
+              <select id="product-beach-id" name="beachId" class="form-control beach-select" required>
+                <option value="">Select a beach</option>
+                <!-- Beaches will be populated via JavaScript -->
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="shop-name">Shop Name</label>
+            <input type="text" id="shop-name" name="shopName" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="shop-address">Shop Address</label>
+            <input type="text" id="shop-address" name="shopAddress" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="shop-address-link">Shop Address Link (Google Maps)</label>
+            <input type="url" id="shop-address-link" name="shopAddressLink" class="form-control" placeholder="https://maps.google.com/...">
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="shop-opening-time">Opening Time</label>
+              <input type="time" id="shop-opening-time" name="openingTime" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="shop-closing-time">Closing Time</label>
+              <input type="time" id="shop-closing-time" name="closingTime" class="form-control">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="product-price">Price (₹)</label>
+            <input type="number" id="product-price" name="price" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="product-photo">Product Photo</label>
+            <input type="file" id="product-photo" name="photo" class="form-control" accept="image/*" onchange="previewImage(this, 'product-preview')">
+            <img id="product-preview" class="image-preview" src="#" alt="Preview">
+          </div>
+          
+          <div class="form-group">
+            <label for="product-payment-amount">Payment Amount (₹)</label>
+            <input type="number" id="product-payment-amount" name="paymentAmount" class="form-control" placeholder="Amount to pay for listing">
+          </div>
+          
+          <button type="submit" class="btn">Add Product</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Add Guide Section -->
+  <section id="add-guide" class="content-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Add a Guide</h2>
+        <p>Register as a beach tour guide</p>
+      </div>
+      
+      <div class="form-container">
+        <h3 class="form-title">Guide Details</h3>
+        <form id="add-guide-form" enctype="multipart/form-data">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="guide-name">Guide Name</label>
+              <input type="text" id="guide-name" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="guide-experience">Experience (years)</label>
+              <input type="number" id="guide-experience" name="experience" class="form-control" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="guide-state">State</label>
+            <select id="guide-state" name="state" class="form-control" required>
+              <option value="">Select a state</option>
+              <option value="Andhra Pradesh">Andhra Pradesh</option>
+              <option value="Goa">Goa</option>
+              <option value="Gujarat">Gujarat</option>
+              <option value="Karnataka">Karnataka</option>
+              <option value="Kerala">Kerala</option>
+              <option value="Maharashtra">Maharashtra</option>
+              <option value="Odisha">Odisha</option>
+              <option value="Tamil Nadu">Tamil Nadu</option>
+              <option value="West Bengal">West Bengal</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="guide-price">Price per Day (₹)</label>
+            <input type="number" id="guide-price" name="price" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="guide-contact">Contact Number</label>
+            <input type="tel" id="guide-contact" name="contact" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="guide-payment-amount">Payment Amount (₹)</label>
+            <input type="number" id="guide-payment-amount" name="paymentAmount" class="form-control" placeholder="Amount to pay for listing">
+          </div>
+          
+          <button type="submit" class="btn">Add Guide</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Add Event Section -->
+  <section id="add-event" class="content-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Add an Event</h2>
+        <p>List an upcoming event at a beach</p>
+      </div>
+      
+      <div class="form-container">
+        <h3 class="form-title">Event Details</h3>
+        <form id="add-event-form" enctype="multipart/form-data">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="event-name">Event Name</label>
+              <input type="text" id="event-name" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="event-beach-id">Beach</label>
+              <select id="event-beach-id" name="beachId" class="form-control beach-select" required>
+                <option value="">Select a beach</option>
+                <!-- Beaches will be populated via JavaScript -->
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="event-date">Date</label>
+              <input type="date" id="event-date" name="date" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="event-time">Time</label>
+              <input type="time" id="event-time" name="time" class="form-control" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="event-description">Description</label>
+            <textarea id="event-description" name="description" class="form-control" rows="4" required></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="event-photo">Event Photo</label>
+            <input type="file" id="event-photo" name="photo" class="form-control" accept="image/*" onchange="previewImage(this, 'event-preview')">
+            <img id="event-preview" class="image-preview" src="#" alt="Preview">
+          </div>
+          
+          <button type="submit" class="btn">Add Event</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Add Ad Section -->
+  <section id="add-ad" class="content-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Place an Advertisement</h2>
+        <p>Advertise your business on our platform</p>
+      </div>
+      
+      <div class="form-container">
+        <h3 class="form-title">Advertisement Details</h3>
+        <form id="add-ad-form" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="ad-title">Advertisement Title</label>
+            <input type="text" id="ad-title" name="title" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="ad-type">Advertisement Type</label>
+            <select id="ad-type" name="type" class="form-control" required>
+              <option value="">Select type</option>
+              <option value="banner">Banner Ad</option>
+              <option value="sidebar">Sidebar Ad</option>
+              <option value="popup">Popup Ad</option>
+              <option value="sponsored">Sponsored Content</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="ad-description">Description</label>
+            <textarea id="ad-description" name="description" class="form-control" rows="4" required></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="ad-url">Target URL</label>
+            <input type="url" id="ad-url" name="url" class="form-control" placeholder="https://your-website.com" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="ad-image">Advertisement Image</label>
+            <input type="file" id="ad-image" name="image" class="form-control" accept="image/*" onchange="previewImage(this, 'ad-preview')">
+            <img id="ad-preview" class="image-preview" src="#" alt="Preview">
+          </div>
+          
+          <div class="form-group">
+            <label for="ad-payment-amount">Payment Amount (₹)</label>
+            <input type="number" id="ad-payment-amount" name="paymentAmount" class="form-control" placeholder="Amount to pay for advertisement" required>
+          </div>
+          
+          <button type="submit" class="btn">Place Advertisement</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Add Activity Section -->
+  <section id="add-activity" class="content-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Add Recreational Activity</h2>
+        <p>Add a new recreational activity to a beach</p>
+      </div>
+      
+      <div class="form-container">
+        <h3 class="form-title">Activity Details</h3>
+        <form id="add-activity-form" enctype="multipart/form-data">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="activity-name">Activity Name</label>
+              <input type="text" id="activity-name" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="activity-beach-id">Beach</label>
+              <select id="activity-beach-id" name="beachId" class="form-control beach-select" required>
+                <option value="">Select a beach</option>
+                <!-- Beaches will be populated via JavaScript -->
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="activity-type">Activity Type</label>
+            <select id="activity-type" name="activityType" class="form-control" required>
+              <option value="">Select activity type</option>
+              <option value="land">Land Activity</option>
+              <option value="water">Water Activity</option>
+              <option value="air">Air Activity</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="activity-description">Description</label>
+            <textarea id="activity-description" name="description" class="form-control" rows="3" required></textarea>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="activity-price">Price per Person (₹)</label>
+              <input type="number" id="activity-price" name="price" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="activity-duration">Duration (minutes)</label>
+              <input type="number" id="activity-duration" name="duration" class="form-control" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="activity-provider">Provider/Operator Name</label>
+            <input type="text" id="activity-provider" name="provider" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="activity-contact">Contact Number</label>
+            <input type="tel" id="activity-contact" name="contact" class="form-control" required>
+          </div>
+                    
+          <button type="submit" class="btn">Add Activity</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Payment Section (Hidden by default, shown after form submission) -->
+  <section id="payment" class="content-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Payment</h2>
+        <p>Complete your payment to finalize your listing</p>
+      </div>
+      
+      <div class="payment-container">
+        <h3 class="form-title">Payment Details</h3>
+        <form id="payment-form">
+          <div class="form-group">
+            <label for="payment-amount">Amount (₹)</label>
+            <input type="number" id="payment-amount" name="amount" class="form-control" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="payment-upi">UPI ID</label>
+            <input type="text" id="payment-upi" name="upi" class="form-control" placeholder="your-upi@provider" required>
+          </div>
+          
+          <button type="button" class="btn" onclick="simulatePayment()">Pay Now</button>
+          
+          <div id="payment-status" class="payment-status"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Tairishi</h3>
+          <p>Discover the most beautiful beaches and experiences in India.</p>
+        </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#" data-target="home">Home</a></li>
+            <li><a href="#" data-target="add-stay">Add Stay</a></li>
+            <li><a href="#" data-target="add-restaurant">Add Restaurant</a></li>
+            <li><a href="#" data-target="add-artcraft">Add Artcraft</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Contact Us</h3>
+          <ul>
+            <li>Email: info@tairishi.com</li>
+            <li>Phone: +91 9876543210</li>
+            <li>Address: Beach Road, Goa, India</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 Tairishi. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/script.js"></script>
+
+</body>
+</html>
